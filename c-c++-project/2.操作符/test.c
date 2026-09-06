@@ -21,7 +21,7 @@
 //     // //10000000 00000000 00000000 00001010 原码
 //     // //11111111 11111111 11111111 11110101 反码
 //     // //11111111 11111111 11111111 11110110 补码
-//     // int num2 = -10;
+//     // int num2 = -10; 
 
 
 //     // //11111111 11111111 11111111 11110110 补码
@@ -36,8 +36,6 @@
 //     /// >> 右移操作符
 //     // 逻辑右移: 左边用0填充，右边丢弃
 //     // 算术右移： 左边用符号位填充，右边丢弃
-
-
 
 //     // //10000000 00000000 00000000 00001010 原码
 //     // //11111111 11111111 11111111 11110101 反码
@@ -109,20 +107,105 @@ int func2(int num){
 }
 
 
+
+//n & (n-1) 这个操作可以将 n 的二进制表示中最右边的 1 变为 0。
+//这个也可以判断是不是2的幂次方
+//如果 n 是 2 的幂次方，那么它的二进制表示中只有一个 1。
+//因此，n & (n - 1) == 0
+
+//处理十位数中二进制中有多少个是1的另一种方法
+int func3(int num){
+
+    int cnt = 0;
+
+
+    // 由此可得 num执行了几次，原数中就有几个1
+    //num =13
+    // n= 1101
+    // n-1=1100
+    // n & (n-1) = 1100
+    // n-1 =1010
+    // n & (n-1) = 1000
+    // n-1 =0111
+    // n & (n-1) = 0000
+
+    while(num != 0){
+        num = num & (num - 1);
+        cnt++;
+    }
+    return cnt;
+}
+
+// int main(){
+
+//     int a = 10;
+//     int b = 20;
+
+//     int swap_num =func1(a, b);
+//     int result = func2(1);
+//     int result2 = func3(13);
+
+//     printf("result = %d\n", result);
+//     printf("result2 = %d\n", result2);
+
+//     return 0;
+// }
+
+// 单目操作符
+//!  ++  --  &  +  -  ~  sizeof  (类型)
+
+
+// 创建结构体
+struct Id{
+    char id[20];
+};
+
+struct Stu{
+    char name[20];
+    int age;
+    double score;
+    struct Id id;
+}s3,s4;
+
+struct Stu s2;
+// s2 s3 s4都是全局变量
+
 int main(){
 
-    int a = 10;
-    int b = 20;
 
-    int swap_num =func1(a, b);
+    //sizeof
+    short s = 10;
+    int n = 8;
+    printf("%zd\n", sizeof(s = 9 + n)); //short占2个字节，int占4个字节 ，最后的长度是少的决定，即short占2个字节，所以输出2
+    printf("%d\n", s); //输出10，因为sizeof是一个编译时运算符，它在编译阶段就已经计算好了，所以不会执行s = 9 + n这个表达式，所以s的值还是10
 
-    int result = func2(1);
-    printf("result = %d\n", result);
+
+    //逗号表达式 exp1,exx2,exp3,...,expn
+    //逗号表达式的值是最后一个表达式的值
+
+
+    int a = 1;
+    int b = 2;
+    int c = (a>b,a=b+10,a,b,b=a+1);//从左往右依次计算
+    printf("c = %d\n", c);  //输出13
+
+    //[]下标引用操作符
+    // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    // printf("arr[5] = %d\n", arr[5]);
+
+
+    // 普通结构体初始化
+    struct Stu stu1 = {"张三", 18, 90.5};
+
+    // 嵌套结构体初始化
+    struct Stu stu2 = {"李四", 19, 80.5,{"1234567890"}};
+
+
+    // 访问结构体
+    printf("stu1.name = %s,stu1.age=%d,stu1.score=%.2f\n", stu1.name, stu1.age, stu1.score);
 
     return 0;
 }
-
-
 
 
 
