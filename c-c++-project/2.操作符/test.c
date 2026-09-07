@@ -58,7 +58,6 @@
 // }
 
 
-
 //位操作符 & | ^ ~
 
 //按位与&    //有0就是0
@@ -114,99 +113,124 @@ int func2(int num){
 //因此，n & (n - 1) == 0
 
 //处理十位数中二进制中有多少个是1的另一种方法
-int func3(int num){
+// int func3(int num){
 
-    int cnt = 0;
+//     int cnt = 0;
 
 
-    // 由此可得 num执行了几次，原数中就有几个1
-    //num =13
-    // n= 1101
-    // n-1=1100
-    // n & (n-1) = 1100
-    // n-1 =1010
-    // n & (n-1) = 1000
-    // n-1 =0111
-    // n & (n-1) = 0000
+//     // 由此可得 num执行了几次，原数中就有几个1
+//     //num =13
+//     // n= 1101
+//     // n-1=1100
+//     // n & (n-1) = 1100
+//     // n-1 =1010
+//     // n & (n-1) = 1000
+//     // n-1 =0111
+//     // n & (n-1) = 0000
 
-    while(num != 0){
-        num = num & (num - 1);
-        cnt++;
-    }
-    return cnt;
-}
+//     while(num != 0){
+//         num = num & (num - 1);
+//         cnt++;
+//     }
+//     return cnt;
+// }
+
+// // int main(){
+
+// //     int a = 10;
+// //     int b = 20;
+
+// //     int swap_num =func1(a, b);
+// //     int result = func2(1);
+// //     int result2 = func3(13);
+
+// //     printf("result = %d\n", result);
+// //     printf("result2 = %d\n", result2);
+
+// //     return 0;
+// // }
+
+// // 单目操作符
+// //!  ++  --  &  +  -  ~  sizeof  (类型)
+
+
+// // 创建结构体
+// struct Id{
+//     char id[20];
+// };
+
+// struct Stu{
+//     char name[20];
+//     int age;
+//     double score;
+//     struct Id id;
+// }s3,s4;
+
+// struct Stu s2;
+// // s2 s3 s4都是全局变量
 
 // int main(){
 
-//     int a = 10;
-//     int b = 20;
 
-//     int swap_num =func1(a, b);
-//     int result = func2(1);
-//     int result2 = func3(13);
+//     //sizeof
+//     short s = 10;
+//     int n = 8;
+//     printf("%zd\n", sizeof(s = 9 + n)); //short占2个字节，int占4个字节 ，最后的长度是少的决定，即short占2个字节，所以输出2
+//     printf("%d\n", s); //输出10，因为sizeof是一个编译时运算符，它在编译阶段就已经计算好了，所以不会执行s = 9 + n这个表达式，所以s的值还是10
 
-//     printf("result = %d\n", result);
-//     printf("result2 = %d\n", result2);
+
+//     //逗号表达式 exp1,exx2,exp3,...,expn
+//     //逗号表达式的值是最后一个表达式的值
+
+
+//     int a = 1;
+//     int b = 2;
+//     int c = (a>b,a=b+10,a,b,b=a+1);//从左往右依次计算
+//     printf("c = %d\n", c);  //输出13
+
+//     //[]下标引用操作符
+//     // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+//     // printf("arr[5] = %d\n", arr[5]);
+
+
+//     // 普通结构体初始化
+//     struct Stu stu1 = {"张三", 18, 90.5};
+
+//     // 嵌套结构体初始化
+//     struct Stu stu2 = {"李四", 19, 80.5,{"1234567890"}};
+
+//     // 访问结构体
+//     printf("stu1.name = %s,stu1.age=%d,stu1.score=%.2f\n", stu1.name, stu1.age, stu1.score);
 
 //     return 0;
 // }
 
-// 单目操作符
-//!  ++  --  &  +  -  ~  sizeof  (类型)
 
-
-// 创建结构体
-struct Id{
-    char id[20];
-};
-
-struct Stu{
-    char name[20];
-    int age;
-    double score;
-    struct Id id;
-}s3,s4;
-
-struct Stu s2;
-// s2 s3 s4都是全局变量
+//整型提升
+// C语言中整型算术运算总是至少以默认类型的精度来进行的
+// 为了获得这个精度，表达式中的字符和短整形操作数在使用之前被转换为普通整型，这种转换称为整型提升
 
 int main(){
-
-
-    //sizeof
-    short s = 10;
-    int n = 8;
-    printf("%zd\n", sizeof(s = 9 + n)); //short占2个字节，int占4个字节 ，最后的长度是少的决定，即short占2个字节，所以输出2
-    printf("%d\n", s); //输出10，因为sizeof是一个编译时运算符，它在编译阶段就已经计算好了，所以不会执行s = 9 + n这个表达式，所以s的值还是10
-
-
-    //逗号表达式 exp1,exx2,exp3,...,expn
-    //逗号表达式的值是最后一个表达式的值
-
-
-    int a = 1;
-    int b = 2;
-    int c = (a>b,a=b+10,a,b,b=a+1);//从左往右依次计算
-    printf("c = %d\n", c);  //输出13
-
-    //[]下标引用操作符
-    // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-    // printf("arr[5] = %d\n", arr[5]);
-
-
-    // 普通结构体初始化
-    struct Stu stu1 = {"张三", 18, 90.5};
-
-    // 嵌套结构体初始化
-    struct Stu stu2 = {"李四", 19, 80.5,{"1234567890"}};
-
-
-    // 访问结构体
-    printf("stu1.name = %s,stu1.age=%d,stu1.score=%.2f\n", stu1.name, stu1.age, stu1.score);
+    char a = 10; //00000000 00000000 00000000 00001010
+    // a - 00001010
+    char b = 120;//00000000 00000000 00000000 01111000
+    // b - 01111000
+    char c = a + b; 
+    //00000000 00000000 00000000 00001010
+    //00000000 00000000 00000000 01111000
+    //00000000 00000000 00000000 10000010
+    // c - 10000010
+    printf("%d\n",c);
+    // 要打印%d 先发生整型提升
+    // 有符号位 按符号位进行补全
+    // 无符号位 高位补升
+    //11111111 11111111 11111111 10000010   //补码
+    //10000000 00000000 00000000 01111101   //反码
+    //10000000 00000000 00000000 01111110   //原码
+    // -126
 
     return 0;
 }
-
 
 
 

@@ -1,17 +1,19 @@
 #include<stdio.h>
 
-
 // 数据类型
 // 字符型----char
 // 整型  ----short - int - long - long long 
 // 浮点型----float(单精度) - double(双精度) - long double(精度更长)
 // 布尔型----_Bool(bool) --得包含头文件 #include<stdbool.h>
 
+
 // signed short int的取值范围为-32768 ~ 32767，最大位32767
 // unsigned short int 的取值范围为0~65535  无符号数的取值会比有符号数的取值大一倍
 
+
 //2^16 = 65536个, 因为是从0开始计数的，所以最大值是65535。
 //%d是打印有符号的整数，%u是打印无符号的整数 %lu是打印unsiged long %llu 是打印 unsiged long long 
+
 
 //数据类型的取值范围
 //可以去查看limits.h和float.h这两个文件进行可以查询数据类型的取值范围
@@ -57,7 +59,6 @@ int main(){
         //     printf("score = %d\n", score);
         // }
 
-
         // scanf(" %d", &score);
         // printf("score = %d\n", score);
         char c = 0;
@@ -69,10 +70,16 @@ int main(){
         char arr[20] = {0};
         // 它在读取一个字符串的时候，若遇到空格，它就会停止读取
         // scanf("%s",arr);
-        
+
         // 这个就不会，它直至遇到换行才会停止读取。
-        scanf("%[^\n]s",arr);
-        printf("%s\n",arr);
+        // scanf("%[^\n]s",arr);
+        // printf("%s\n",arr);
+
+        int year,month,day =0;
+
+        //%*c赋值抑制符，读到之后，就会扔到，并不会出现到值中。
+        scanf("%d%*c%d%*c%d",&year,&month,&day);
+        printf("%d %d %d",year,month,day);
 
     return 0;
 }
