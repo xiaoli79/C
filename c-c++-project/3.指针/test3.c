@@ -73,3 +73,62 @@
 //     test(arr);
 //     return 0;
 // }
+
+
+
+// 二级指针
+// int main(){
+
+//     int a = 10;
+//     int* pa = &a;
+//     int** paa = &pa; //二级指针变量指向的是一级指针变量的地址,它指向的内容是int*
+//     printf("a的地址 = %p\n",&a);
+//     printf("pa指向的地址 = %p\n",pa); 
+//     printf("pa的地址 = %p\n",&pa);     
+//     printf("ppa指向的地址 = %p\n",paa);    
+
+//     printf("%d ",(**paa));
+
+//     return 0;
+// }
+
+
+// 指针数组 int* arr[5]
+// 是数组,存放指针的数组
+
+// int main(){
+//     int a = 10;
+//     int b = 20;
+//     int c = 30;
+
+//     int* arr[] = {&a,&b,&c};  //指针数组    
+//     int len = sizeof(arr) / sizeof(arr[0]);
+
+//     for(int i = 0 ; i< len ; i++){
+//         printf("%d ",*arr[i]);
+//     }
+//     printf("\n");
+
+//     return 0;
+// }
+
+
+// 指针数组来模拟二维数组
+// int main(){
+
+//     int arr1[] = {1,2,3,4,5};
+//     int arr2[] = {2,3,4,5,6};
+//     int arr3[] = {3,4,5,6,7};
+
+//     int* p[] = {arr1,arr2,arr3};
+
+
+//     for(int i = 0 ; i < 3 ; i++){
+
+//         for(int j = 0 ; j < 5 ; j++){
+//             printf("%d ",*((p[i]) + j ));
+//         }
+//         printf("\n");
+//     }
+
+//     return 0;
